@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  View,
+  Text
+} from 'react-native';
+import { 
+  useFonts, 
+  BalsamiqSans_400Regular, 
+  BalsamiqSans_700Bold 
+} from '@expo-google-fonts/balsamiq-sans';
+import { Router } from './src/routes/router';
+
+import { LoadingPage } from './src/components/LoadingPage';
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    BalsamiqSans_400Regular,
+    BalsamiqSans_700Bold
+  });
+
+  if(!fontsLoaded) {
+    return <LoadingPage />
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Router />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
