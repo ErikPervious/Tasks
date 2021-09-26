@@ -11,6 +11,7 @@ import {
 import { Router } from './src/routes/router';
 
 import { LoadingPage } from './src/components/LoadingPage';
+import colors from './src/styles/colors';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,6 +23,8 @@ export default function App() {
     return <LoadingPage />
   }
   return (
-    <Router />
+    <View style={{flex: 1, backgroundColor: colors.coral}}>
+      <Router />
+    </View>
   );
 }

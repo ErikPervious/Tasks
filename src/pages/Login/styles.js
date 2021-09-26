@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 50,
+    paddingVertical: 30,
     borderBottomLeftRadius: 22,
     borderBottomRightRadius: 22,
     backgroundColor: colors.black,
@@ -38,14 +38,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: colors.coral,
   },
-  input: {
+  inputEmail: {
     width: '100%',
     paddingHorizontal: 10,
     paddingVertical: 15,
     marginBottom: 10,
     backgroundColor: colors.black,
-    fontSize: 18,
     borderRadius: 8,
+    fontSize: 18,
+    color: colors.white,
+    fontFamily: fonts.balsamiqRegular
+  },
+  containerInputPassword: {
+    width: '100%',
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    marginBottom: 10,
+    backgroundColor: colors.black,
+    borderRadius: 8,
+  },
+  inputPassword: {
+    flex: 1,
+    fontSize: 18,
     color: colors.white,
     fontFamily: fonts.balsamiqRegular
   },
