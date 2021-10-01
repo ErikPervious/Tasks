@@ -19,6 +19,7 @@ LogBox.ignoreAllLogs()
 
 import styles from './styles';
 import colors from '../../styles/colors';
+import { NoTasks } from '../../components/NoTasks';
 
 export function Tasks({route, navigation}) {
   const [newTask, setNewTask] = useState('');
@@ -155,18 +156,21 @@ export function Tasks({route, navigation}) {
         </View>
       </View>
       <View style={styles.main}>
-        { loading === false ?
-          <FlatList
-            data={tasks}
-            keyExtractor={item => item.key}
-            renderItem={({item}) => (
-              <Task 
-                data={item}
-                handleDelete={(key) => handleDelete(key)}
-                handleEdit={(data) => handleEdit(data)}
-              />
-            )}
-          />
+        { !loading ?
+          tasks == '' ?
+            <NoTasks />
+          : 
+            <FlatList
+              data={tasks}
+              keyExtractor={item => item.key}
+              renderItem={({item}) => (
+                <Task 
+                  data={item}
+                  handleDelete={(key) => handleDelete(key)}
+                  handleEdit={(data) => handleEdit(data)}
+                />
+              )}
+            />
           : <ActivityIndicator color={colors.black} size={50} />
         }
       </View>

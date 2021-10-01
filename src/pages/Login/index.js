@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   ScrollView,
+  ActivityIndicator
 } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { Feather } from '@expo/vector-icons';
@@ -22,6 +23,8 @@ export function Login({navigation}) {
   const [password, setPassword] = useState('');
   const [saveLogin, setSaveLogin] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
+  const [loadingLogin, setLoadingLogin] = useState(false);
+  const [loadingCreate, setLoadingCreate] = useState(false);
 
   async function saveToken() {
     if(saveLogin === false) {
@@ -44,11 +47,14 @@ export function Login({navigation}) {
     if(email === '' || password === '') {
       return;
     }
-
+    setLoadingCreate(true);
     await firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(value => {
       saveToken();
       navigation.navigate('Tasks', {user: value.user.uid});
+      setEmail('');
+      setPassword('');
+      setLoadingCreate(false);
     })
     .catch(error => {
       switch (error.message) {
@@ -62,6 +68,7 @@ export function Login({navigation}) {
           alert('A senha deve ter no mínimo 6 caracteres.');
           break;
       };
+      setLoadingCreate(false);
       return;
     });
   };
@@ -69,12 +76,15 @@ export function Login({navigation}) {
   async function login() {
     if(email === '' || password === '') {
       return;
-    }
-
+    };
+    setLoadingLogin(true);
     await firebase.auth().signInWithEmailAndPassword(email, password)
     .then(value => {
       saveToken();
       navigation.navigate('Tasks', {user: value.user.uid});
+      setEmail('');
+      setPassword('');
+      setLoadingLogin(false);
     })
     .catch(error => {
       console.log(error);
@@ -82,16 +92,16 @@ export function Login({navigation}) {
         case 'The password is invalid or the user does not have a password.':
           alert('A senha está incorreta ou o email não possui cadastro.');
           break;
+        case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+          alert('O usuário não existe ou a conta foi encerrada.');
+          break;
         case 'The email address is badly formatted.':
           alert('Digite um email válido.\nExemplo: nome@gmail.com.');
           break;
-      }
+      };
+      setLoadingLogin(false);
       return;
     });
-  };
-
-  async function signInWithGoogle() {
-    alert('em criação');
   };
 
   useEffect(() => {
@@ -194,30 +204,21 @@ export function Login({navigation}) {
             style={styles.button}
             onPress={() => login()}
           >
-            <Text style={styles.buttonText}>Entrar</Text>
+            { loadingLogin ?
+              <ActivityIndicator size={25} color={colors.white} />
+              :
+              <Text style={styles.buttonText}>Entrar</Text>
+            }
           </TouchableOpacity>
           <TouchableOpacity
           style={{marginBottom: 20}}
             onPress={() => createAccount()}
           >
-            <Text style={[styles.buttonText, {color: colors.black}]}>Cadastrar</Text>
-          </TouchableOpacity>
-          <View style={styles.separation}>
-            <View style={styles.separationLine} />
-            <Text style={styles.separationText}>ou</Text>
-            <View style={styles.separationLine} />
-          </View>
-          <TouchableOpacity
-            style={styles.buttonLoginWithGoogle}
-            onPress={() => signInWithGoogle()}
-          >
-            <Image
-              source={require('../../assets/google-logo.png')}
-              style={styles.googleIconButton}
-            />
-            <View style={styles.textContainer}>
-              <Text style={[styles.buttonText, {color: colors.white}]}>Entrar com o google</Text>
-            </View>
+            { loadingCreate ? 
+              <ActivityIndicator size={25} color={colors.black} />
+              :
+              <Text style={[styles.buttonText, {color: colors.black}]}>Cadastrar</Text>
+            }
           </TouchableOpacity>
         </View>
       </View>

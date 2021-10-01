@@ -94,47 +94,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontFamily: fonts.balsamiqBold
   },
-  separation: {
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    marginBottom: 20
-  },
-  separationLine: {
-    width: '40%',
-    height: 1,
-    backgroundColor: colors.black_gray
-  },
-  separationText: {
-    color: colors.black_gray,
-    fontFamily: fonts.balsamiqBold,
-    fontSize: 30,
-    lineHeight: 30
-  },
-  buttonLoginWithGoogle: {
-    width: '100%',
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    marginBottom: 10,
-    backgroundColor: colors.black,
-    borderRadius: 8,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row'
-  },
-  googleIconButton: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-    marginHorizontal: 20
-  },
-  textContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  }
 })
 
 export default styles;
