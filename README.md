@@ -34,13 +34,26 @@ e também criar um projeto no [Firebase](https://firebase.com/) para carregar su
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/ErikPervious/iClimate.git
+$ git clone https://github.com/ErikPervious/Tasks.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd iClimate
+$ cd Tasks
 
 # Instale o projeto na sua máquina
 $ yarn install
+
+# Agora adicione suas configurações do firebase em um arquivo e o importe em ./services/firebase.js
+# Exemplo de configuração:
+$ export const firebaseConfig = {
+$   apiKey: "",
+$   authDomain: "",
+$   databaseURL: "",
+$   projectId: "",
+$   storageBucket: "",
+$   messagingSenderId: "",
+$   appId: "",
+$   measurementId: ""
+$ };
 
 # Execute a aplicação
 $ yarn start
@@ -48,3 +61,16 @@ $ yarn start
 # Ou use o próprio Expo
 $ expo start
 ```
+
+<h2 id="technologies">✨ Tecnologias</h2>
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Node.js](https://nodejs.org/en/)
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.io)
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/install/)
+
+<h2 id="license">📄 Licença</h2>
+
+Esse projeto está sob a licença GNU. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
