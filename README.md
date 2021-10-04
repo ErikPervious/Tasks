@@ -70,6 +70,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.io)
 - [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/install/)
+- [Firebase](https://firebase.com)
 
 <h2 id="license">📄 Licença</h2>
 
