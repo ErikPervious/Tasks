@@ -13,13 +13,14 @@ import {
 import firebase from '../../services/firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Feather } from '@expo/vector-icons';
+
 import { Task } from '../../components/Task';
+import { NoTasks } from '../../components/NoTasks';
 
 LogBox.ignoreAllLogs()
 
 import styles from './styles';
 import colors from '../../styles/colors';
-import { NoTasks } from '../../components/NoTasks';
 
 export function Tasks({route, navigation}) {
   const [newTask, setNewTask] = useState('');
@@ -43,7 +44,6 @@ export function Tasks({route, navigation}) {
         let cloneTasks = tasks;
         cloneTasks[taskIndex].name = newTask;
         setTasks([...cloneTasks]);
-        console.log(cloneTasks);
       })
       setKey('');
       setNewTask('');
