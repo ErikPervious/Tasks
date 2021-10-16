@@ -217,7 +217,7 @@ export function Login({navigation}) {
             { loadingCreate ? 
               <ActivityIndicator size={25} color={colors.black} />
               :
-              <Text style={[styles.buttonText, {color: colors.black}]}>Cadastrar</Text>
+              <Text style={[styles.buttonText, {color: colors.black}]}>Criar uma conta!</Text>
             }
           </TouchableOpacity>
         </View>

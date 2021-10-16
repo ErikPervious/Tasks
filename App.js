@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   View,
-  Text
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { 
   useFonts, 
   BalsamiqSans_400Regular, 
@@ -24,7 +24,9 @@ export default function App() {
   }
   return (
     <View style={{flex: 1, backgroundColor: colors.coral}}>
-      <Router />
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
     </View>
   );
 }

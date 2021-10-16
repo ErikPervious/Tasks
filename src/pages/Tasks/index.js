@@ -71,6 +71,7 @@ export function Tasks({route, navigation}) {
 
   async function logOut() {
     AsyncStorage.removeItem('@token');
+    firebase.auth().signOut();
     navigation.goBack();
   };
 
